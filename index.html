@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>MovieWiki</title>
+  
+    <link rel="stylesheet" type="text/css" href="CSS/styles.css" />
+ 
+    <link
+      href="https://fonts.googleapis.com/css?family=Carrois+Gothic+SC"
+      rel="stylesheet"
+    />
+ 
+  </head>
+  <body>
+
+    <nav class="navbar navbar-inverse">
+      <div class="container-fluid">
+       
+        <div class="navbar-header">
+     
+          <a class="navbar-brand" href="#" >
+            MovieWiki</a>
+        
+        <div class="search-box">
+            <input
+              onkeyup="getanswer(document.getElementById('qurybox').value)"
+              id="qurybox"
+              placeholder="Type to seach"
+            />
+          </div>
+          <div id="answer"></div>
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+          <script>
+            var data;
+            function getanswer(q) {
+              $.get(
+                "https://www.omdbapi.com/?s=" + q + "&apikey=32686e66",
+                function(rawdata) {
+                  var rawstring = JSON.stringify(rawdata);
+                  data = JSON.parse(rawstring);
+                  var div = document.getElementById("answer");
+                  div.innerHTML = "";
+                  for (var i = 0; i < 4; i++) {
+                    var image = document.createElement("img");
+                    image.src = data.Search[i].Poster;
+                    div.appendChild(image);
+                  }
+                }
+              );
+            }
+          </script>
+          </div>
+        </div>
+        </div>
+    </nav>
+  </body>
+</html>
