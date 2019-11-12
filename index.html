@@ -3,7 +3,7 @@
   <head>
     <title>MovieWiki</title>
   
-    <link rel="stylesheet" type="text/css" href="CSS/styles.css" />
+    <link rel="stylesheet" type="text/css" href="styles.css" />
  
     <link
       href="https://fonts.googleapis.com/css?family=Carrois+Gothic+SC"
@@ -40,7 +40,7 @@
                   data = JSON.parse(rawstring);
                   var div = document.getElementById("answer");
                   div.innerHTML = "";
-                  for (var i = 0; i < 4; i++) {
+                  for (var i = 0; i < 8; i++) {
                     var image = document.createElement("img");
                     image.src = data.Search[i].Poster;
                     div.appendChild(image);
