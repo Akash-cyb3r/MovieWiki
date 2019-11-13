@@ -1,10 +1,12 @@
 body {
   background-color: black;
 }
-img {
+
+.img {
   max-width: 100%;
   border: 2px white solid;
   padding: 1%;
+  margin: 0.02%;
 }
 .navbar-brand {
   font-size: 50px;
@@ -12,38 +14,33 @@ img {
   font-weight: bold;
   color: white;
 }
-
-.rating {
-  font-weight: bold;
-}
-
-.release {
-  font-weight: bold;
-}
-
-.eachMovie {
-  background-color: black;
-  color: white;
-}
-.btnModal {
-  background-color: black;
-  margin-bottom: 35px;
-  border: black;
-}
-.modal-content {
-  color: black;
-  padding: 2px;
-  min-width: 656px;
-}
-.moviePosterInModal {
-  padding: 12px;
-}
 .search-box {
   font-size: 25px;
   font-weight: regular;
   font-family: "Carrois Gothic SC", sans-serif;
 }
+#answer {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -20%);
+}
+#show-more {
+  display: none;
+  margin: 12px auto;
+  width: 200px;
+  padding: 15px;
+  background-color: transparent;
+  color: #ffffff;
+  font-weight: bold;
+  border-radius: 5px;
+  border: 2px solid #ffffff;
+}
 
-#movieGenreLabel {
-  color: white;
+#qurybox {
+  border: 1px solid #ffffff;
+  height: 28px;
+  width: 250px;
+  border-radius: 50px;
+  padding: 0px 10px;
 }

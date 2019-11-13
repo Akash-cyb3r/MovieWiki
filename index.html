@@ -13,45 +13,78 @@
   </head>
   <body>
 
-    <nav class="navbar navbar-inverse">
+    <nav class="navbar-inverse">
       <div class="container-fluid">
        
         <div class="navbar-header">
      
           <a class="navbar-brand" href="#" >
             MovieWiki</a>
-        
-        <div class="search-box">
-            <input
-              onkeyup="getanswer(document.getElementById('qurybox').value)"
-              id="qurybox"
-              placeholder="Type to seach"
-            />
-          </div>
-          <div id="answer"></div>
-          <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-          <script>
-            var data;
-            function getanswer(q) {
-              $.get(
-                "https://www.omdbapi.com/?s=" + q + "&apikey=32686e66",
-                function(rawdata) {
-                  var rawstring = JSON.stringify(rawdata);
-                  data = JSON.parse(rawstring);
-                  var div = document.getElementById("answer");
-                  div.innerHTML = "";
-                  for (var i = 0; i < 8; i++) {
-                    var image = document.createElement("img");
-                    image.src = data.Search[i].Poster;
-                    div.appendChild(image);
+            <div class="search-box">
+              <input onkeyup="getanswer(document.getElementById('qurybox').value)" id="qurybox" placeholder="Type the movie name to search"> 
+              </div>
+              </hr>
+              <div class="answer">
+                   <div id="row1"></div>
+                   <div id="row2"></div>
+                   <div id="row3"></div>
+                   <button type="button" onclick="showmore()" id="show-more">Show more</button>
+              </div> 
+              <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js">
+              </script> 
+              <script> 
+              var data;
+              function getanswer(q){
+              $.get("https://www.omdbapi.com/?s="+q+"&apikey=32686e66", 
+              function(rawdata){
+              var rawstring =JSON.stringify(rawdata);
+              data =JSON.parse(rawstring);  
+              
+                  var row1 = document.getElementById("row1");
+                  var row2 = document.getElementById("row2");
+                  var row3 = document.getElementById("row3");
+                  row1.innerHTML = "";
+                  row2.innerHTML = "";
+                  row3.innerHTML = "";
+                  for(var i=0;i<15;i++){
+                      if(i<4){
+                          var image = document.createElement("img");
+                      image.src = data.Search[i].Poster;
+                      row1.appendChild(image);
+                      }
+                      else if(i<8){
+                          var image = document.createElement("img");
+                      image.src = data.Search[i].Poster;
+                      row2.appendChild(image);
+                      }
+                      else{
+                          document.getElementById("show-more").style.display = "block";
+                          var image = document.createElement("img");
+                      image.src = data.Search[i].Poster;
+                      row3.appendChild(image);
+                      }
                   }
-                }
+              }
               );
-            }
-          </script>
+              }
+              
+              var j=0;
+              function showmore(){
+                  if(!j){
+                      document.getElementById("row3").style.display = "flex";
+                      document.getElementById("show-more").innerHTML = "Show less";
+                      j = 1;
+                  }
+                  else{
+                      document.getElementById("row3").style.display = "none";
+                      document.getElementById("show-more").innerHTML = "Show more";
+                      j = 0;
+                  }
+              }
+              </script>
           </div>
         </div>
-        </div>
+      </div>
     </nav>
   </body>
 </html>
