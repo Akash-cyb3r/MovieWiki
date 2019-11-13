@@ -2,7 +2,7 @@ body {
   background-color: black;
 }
 
-.img {
+img {
   max-width: 100%;
   border: 2px white solid;
   padding: 1%;
